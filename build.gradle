@@ -15,10 +15,10 @@ buildscript {
 plugins {
   id 'groovy'
   id 'idea'
-  id 'pl.allegro.tech.build.axion-release' version '1.11.0'
-  id 'com.gradle.plugin-publish' version '0.14.0'
+  alias(libs.plugins.axion.release)
+  alias(libs.plugins.plugin.publish)
   id 'java-gradle-plugin'
-  id 'ru.vyarus.animalsniffer' version '1.5.3'
+  alias(libs.plugins.animalsniffer)
 }
 
 apply plugin: 'com.github.hierynomus.license'
@@ -68,35 +68,32 @@ sourceSets.create("integrationTest")
 dependencies {
   signature 'org.codehaus.mojo.signature:java17:1.0@signature'
 
-    implementation "org.codehaus.plexus:plexus-utils:2.0.5"
-    implementation "com.mycila.xmltool:xmltool:3.3"
-    // Using implementation instead of groovy, so that it goes into the pom
-    implementation ('com.mycila:license-maven-plugin:3.0') {
+    implementation libs.plexus.utils
+    implementation libs.xmltool
+    implementation(libs.license.maven.plugin) {
         exclude group: 'org.apache.maven', module: 'maven-plugin-api'
         exclude group: 'org.apache.maven', module: 'maven-project'
     }
     implementation gradleApi()
 
-    def androidGradlePlugin = 'com.android.tools.build:gradle:4.1.0'
-    compileOnly androidGradlePlugin
-    testImplementation androidGradlePlugin
+    testImplementation libs.android.gradle.plugin
 
     integrationTestImplementation(project)
     integrationTestImplementation gradleTestKit()
-    integrationTestImplementation platform("org.spockframework:spock-bom:2.0-M5-groovy-3.0")
-    integrationTestImplementation 'com.netflix.nebula:nebula-test:8.1.0'
-    integrationTestImplementation 'org.spockframework:spock-core'
-    integrationTestImplementation 'org.spockframework:spock-junit4'
-    integrationTestImplementation 'junit:junit:4.13.1'
-    integrationTestImplementation 'com.google.guava:guava:17.0'
+    integrationTestImplementation platform(libs.spock.bom)
+    integrationTestImplementation libs.nebula.test
+    integrationTestImplementation libs.spock.core
+    integrationTestImplementation libs.spock.junit4
+    integrationTestImplementation libs.junit
+    integrationTestImplementation libs.guava
 
     testImplementation gradleTestKit()
-    testImplementation 'com.netflix.nebula:nebula-test:8.1.0'
-    testImplementation platform("org.spockframework:spock-bom:2.0-M5-groovy-3.0")
-    testImplementation 'org.spockframework:spock-core'
-    testImplementation 'org.spockframework:spock-junit4'
-    testImplementation 'junit:junit:4.13.1'
-    testImplementation 'com.google.guava:guava:17.0'
+    testImplementation libs.nebula.test
+    testImplementation platform(libs.spock.bom)
+    testImplementation libs.spock.core
+    testImplementation libs.spock.junit4
+    testImplementation libs.junit
+    testImplementation libs.guava
 }
 
 def integrationTestTask = tasks.register("integrationTest", Test) {
