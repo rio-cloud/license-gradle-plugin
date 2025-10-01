@@ -12,6 +12,10 @@ class LicenseReportIntegrationTest extends IntegrationSpec {
     File subProjectBuildFile
 
     def setup() {
+        // Let's ignore the deprecation warnings so we can get clean tests.
+        // TODO: Refactor the test to fix the deprecation warnings
+        System.setProperty("ignoreDeprecations", "true")
+
         buildFile << """
 plugins {
     id "java"
@@ -51,6 +55,10 @@ repositories {
 }
 """
         outputDir = directory("build/reports/license")
+    }
+
+    void cleanup() {
+        System.setProperty("ignoreDeprecations", "false")
     }
 
     def "should handle poms with xlint args"() {
