@@ -19,6 +19,8 @@ plugins {
   alias(libs.plugins.plugin.publish)
   id 'java-gradle-plugin'
   alias(libs.plugins.animalsniffer)
+  alias(libs.plugins.version.catalog.update)
+  alias(libs.plugins.versions)
 }
 
 apply plugin: 'com.github.hierynomus.license'
@@ -217,6 +219,14 @@ pluginBundle {
             description = "Reports over licenses"
             tags = [ "gradle", "plugin", "license", "report" ]
         }
+    }
+}
+
+versionCatalogUpdate {
+    versionSelector {
+        // here 'it' is a ModuleVersionCandidate that can be used to determine if the version
+        // is allowed, returning true if it is.
+        !(it.candidate.version.contains('SNAPSHOT') || it.candidate.version.contains('ALPHA'))
     }
 }
 

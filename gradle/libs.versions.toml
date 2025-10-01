@@ -1,29 +1,33 @@
 [versions]
-spock = "2.0-M5-groovy-3.0"
-nebulaTest = "8.1.0"
-junit = "4.13.1"
-guava = "17.0"
 androidGradlePlugin = "4.1.0"
-plexusUtils = "2.0.5"
-xmltool = "3.3"
-licenseMavenPlugin = "3.0"
-pluginPublish = "0.14.0"
-axionRelease = "1.11.0"
 animalsniffer = "1.5.3"
+axionRelease = "1.11.0"
+guava = "17.0"
+junit = "4.13.1"
+licenseMavenPlugin = "3.0"
+nebulaTest = "8.1.0"
+plexusUtils = "2.0.5"
+pluginPublish = "0.14.0"
+spock = "2.0-M5-groovy-3.0"
+versionCatalogUpdate = "0.8.4"
+versions = "0.51.0"
+xmltool = "3.3"
 
 [libraries]
+android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
+guava = { module = "com.google.guava:guava", version.ref = "guava" }
+junit = { module = "junit:junit", version.ref = "junit" }
+license-maven-plugin = { module = "com.mycila:license-maven-plugin", version.ref = "licenseMavenPlugin" }
+nebula-test = { module = "com.netflix.nebula:nebula-test", version.ref = "nebulaTest" }
+plexus-utils = { module = "org.codehaus.plexus:plexus-utils", version.ref = "plexusUtils" }
 spock-bom = { module = "org.spockframework:spock-bom", version.ref = "spock" }
 spock-core = { module = "org.spockframework:spock-core" }
 spock-junit4 = { module = "org.spockframework:spock-junit4" }
-nebula-test = { module = "com.netflix.nebula:nebula-test", version.ref = "nebulaTest" }
-junit = { module = "junit:junit", version.ref = "junit" }
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
-android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
-plexus-utils = { module = "org.codehaus.plexus:plexus-utils", version.ref = "plexusUtils" }
 xmltool = { module = "com.mycila.xmltool:xmltool", version.ref = "xmltool" }
-license-maven-plugin = { module = "com.mycila:license-maven-plugin", version.ref = "licenseMavenPlugin" }
 
 [plugins]
-plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "pluginPublish" }
-axion-release = { id = "pl.allegro.tech.build.axion-release", version.ref = "axionRelease" }
 animalsniffer = { id = "ru.vyarus.animalsniffer", version.ref = "animalsniffer" }
+axion-release = { id = "pl.allegro.tech.build.axion-release", version.ref = "axionRelease" }
+plugin-publish = { id = "com.gradle.plugin-publish", version.ref = "pluginPublish" }
+version-catalog-update = { id = "nl.littlerobots.version-catalog-update", version.ref = "versionCatalogUpdate" }
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions" }
