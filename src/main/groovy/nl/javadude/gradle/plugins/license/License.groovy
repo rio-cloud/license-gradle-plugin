@@ -25,6 +25,8 @@ import org.gradle.api.GradleException
 import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.*
+import org.gradle.api.tasks.util.PatternSet
+import org.gradle.api.tasks.util.internal.PatternSetFactory
 
 import javax.inject.Inject
 
@@ -217,5 +219,14 @@ class License extends SourceTask implements VerificationTask {
         closure.resolveStrategy = Closure.DELEGATE_FIRST
         closure()
         internalMappings.putAll(tmpMap)
+    }
+
+    protected PatternSetFactory getPatternSetFactory() {
+        return new PatternSetFactory() {
+            @Override
+            PatternSet createPatternSet() {
+                return new PatternSet()
+            }
+        }
     }
 }

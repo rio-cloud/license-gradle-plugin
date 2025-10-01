@@ -15,7 +15,7 @@
  */
 package nl.javadude.gradle.plugins.license
 
-import org.gradle.util.ConfigureUtil
+import org.gradle.api.Action
 
 /**
  * Extension contains attributes for {@link DownloadLicenses}.
@@ -105,12 +105,15 @@ class DownloadLicensesExtension {
     }
 
     /**
-     * Configure report container.
+     * Configure the report extension using a Gradle Action.
      *
-     * @param closure configuring closure
+     * This method allows configuration of the {@link DownloadLicensesReportExtension}
+     * using a type-safe {@link org.gradle.api.Action} instead of a Groovy closure.
+     *
+     * @param action the Gradle Action to configure the report extension
      */
-    def report(Closure closure) {
-        ConfigureUtil.configure(closure, report)
+    def report(Action<? super DownloadLicensesReportExtension> action) {
+        action.execute(report)
     }
 
     def static group(String group) {

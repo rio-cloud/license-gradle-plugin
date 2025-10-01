@@ -15,7 +15,8 @@
  */
 package nl.javadude.gradle.plugins.license
 
-import groovy.util.slurpersupport.GPathResult
+import groovy.xml.slurpersupport.GPathResult
+import groovy.xml.XmlSlurper
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.Dependency
