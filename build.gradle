@@ -31,7 +31,7 @@ group = 'com.hierynomus.gradle.plugins'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -121,11 +121,11 @@ if (JavaVersion.current().isJava8Compatible()) {
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
-    classifier = 'sources'
+    archiveClassifier = 'sources'
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
+    archiveClassifier = 'javadoc'
     from javadoc.destinationDir
 }
 
@@ -143,81 +143,67 @@ tasks.withType(Test).all { t ->
   }
 }
 
-def pomConfig = {
-    name project.name
-    description project.project_description
-    url project.project_url
-    inceptionYear '2011'
-
-    scm { url project.project_scm }
-
-    licenses {
-        license([:]) {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
-        }
-    }
-
-    developers {
-        developer {
-            id 'hierynomus'
-            name 'Jeroen van Erp'
-            url 'http://www.javadude.nl/'
-            email 'jeroen@javadude.nl'
-            roles { role 'Developer' }
-        }
-    }
-
-    contributors {
-        contributor {
-            name 'Tim Harsch'
-            email 'harschware@yahoo.com'
-        }
-        contributor {
-            name 'Justin Ryan'
-            email 'jryan@netflix.com'
-        }
-    }
-}
-
 gradlePlugin {
     plugins {
         licensePlugin {
             id = "com.github.hierynomus.license"
             implementationClass = "nl.javadude.gradle.plugins.license.LicensePlugin"
-        }
-
-        licenseBasePlugin {
-            id = "com.github.hierynomus.license-base"
-            implementationClass = "com.hierynomus.gradle.license.LicenseBasePlugin"
-        }
-
-        licenseReportPlugin {
-            id = "com.github.hierynomus.license-report"
-            implementationClass = "com.hierynomus.gradle.license.LicenseReportingPlugin"
-        }
-    }
-}
-
-pluginBundle {
-    website = "https://github.com/hierynomus/license-gradle-plugin"
-    vcsUrl = "https://github.com/hierynomus/license-gradle-plugin.git"
-    tags = ["gradle", "plugin", "license"]
-    plugins {
-        licensePlugin {
             displayName = "License plugin for Gradle"
             description = "Applies a header to files, typically a license"
         }
         licenseBasePlugin {
+            id = "com.github.hierynomus.license-base"
+            implementationClass = "com.hierynomus.gradle.license.LicenseBasePlugin"
             displayName = "Base License plugin for Gradle"
             description = "Base plugin to apply a header to files, typically a license"
         }
-
         licenseReportPlugin {
+            id = "com.github.hierynomus.license-report"
+            implementationClass = "com.hierynomus.gradle.license.LicenseReportingPlugin"
             displayName = "License Report plugin for Gradle"
             description = "Reports over licenses"
-            tags = [ "gradle", "plugin", "license", "report" ]
+        }
+    }
+}
+
+publishing {
+    publications {
+        pluginMaven(MavenPublication) {
+            pom {
+                name = project.name
+                description = project.description
+                url = "https://github.com/hierynomus/license-gradle-plugin"
+                inceptionYear = '2011'
+                scm {
+                    url = "https://github.com/hierynomus/license-gradle-plugin.git"
+                }
+                licenses {
+                    license {
+                        name = 'The Apache Software License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'hierynomus'
+                        name = 'Jeroen van Erp'
+                        url = 'http://www.javadude.nl/'
+                        email = 'jeroen@javadude.nl'
+                        roles = ['Developer']
+                    }
+                }
+                contributors {
+                    contributor {
+                        name = 'Tim Harsch'
+                        email = 'harschware@yahoo.com'
+                    }
+                    contributor {
+                        name = 'Justin Ryan'
+                        email = 'jryan@netflix.com'
+                    }
+                }
+            }
         }
     }
 }

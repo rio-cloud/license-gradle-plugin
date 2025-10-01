@@ -10,5 +10,3 @@ gradleEnterprise {
 }
 
 rootProject.name='license-gradle-plugin'
-
-enableFeaturePreview('VERSION_CATALOGS')

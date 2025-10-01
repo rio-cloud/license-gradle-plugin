@@ -35,6 +35,10 @@ import spock.lang.TempDir
 class LicenseIntegrationTest extends IntegrationSpec {
     File license
     def setup() {
+        // Let's ignore the deprecation warnings so we can get clean tests.
+        // TODO: Refactor the test to fix the deprecation warnings
+        System.setProperty("ignoreDeprecations", "true")
+
         buildFile << """
     plugins {
         id "java"
@@ -47,6 +51,10 @@ class LicenseIntegrationTest extends IntegrationSpec {
     }
 """
         license = createLicenseFile()
+    }
+
+    void cleanup() {
+        System.setProperty("ignoreDeprecations", "false")
     }
 
     def "should work on empty project"() {
@@ -390,4 +398,3 @@ key4 = value4
     }
 
 }
-
