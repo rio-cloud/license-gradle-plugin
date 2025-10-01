@@ -31,7 +31,7 @@ group = 'com.hierynomus.gradle.plugins'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -87,6 +87,7 @@ dependencies {
     integrationTestImplementation libs.spock.core
     integrationTestImplementation libs.spock.junit4
     integrationTestImplementation libs.junit
+    integrationTestImplementation libs.junit.platform.launcher
     integrationTestImplementation libs.guava
 
     testImplementation gradleTestKit()
@@ -102,7 +103,9 @@ def integrationTestTask = tasks.register("integrationTest", Test) {
     description = 'Runs the integration tests.'
     group = "verification"
     testClassesDirs = sourceSets.integrationTest.output.classesDirs
-    classpath = sourceSets.integrationTest.runtimeClasspath
+
+    classpath = sourceSets.integrationTest.runtimeClasspath + sourceSets.main.output + configurations.testRuntimeClasspath
+
     mustRunAfter(tasks.named('test'))
     useJUnitPlatform()
 }
@@ -114,7 +117,7 @@ tasks.named('check') {
 
 // This disables the pedantic doclint feature of JDK8
 if (JavaVersion.current().isJava8Compatible()) {
-    tasks.withType(Javadoc) {
+    tasks.withType(Javadoc).configureEach {
         options.addStringOption('Xdoclint:none', '-quiet')
     }
 }
@@ -133,7 +136,7 @@ license {
     ignoreFailures true
 }
 
-tasks.withType(Test).all { t ->
+tasks.withType(Test).configureEach { t ->
   t.afterSuite { descriptor, result ->
     def indicator = "\u001B[32m✓\u001b[0m"
     if (result.failedTestCount > 0) {
@@ -201,6 +204,10 @@ publishing {
                     contributor {
                         name = 'Justin Ryan'
                         email = 'jryan@netflix.com'
+                    }
+                    contributor {
+                        name = 'Veselin Nikolov'
+                        email = 'nickolov.vesselin@gmail.com'
                     }
                 }
             }

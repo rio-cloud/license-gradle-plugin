@@ -80,7 +80,9 @@ class LicenseResolver {
                 }
                 if (licenseEntry != null) {
                     def license = licenseEntry.value
-                    def licenseMetadata = license instanceof String ? DownloadLicensesExtension.license(license) : license
+                    def licenseName = license instanceof String ? license : (license instanceof LicenseMetadata ? license.licenseName : null)
+                    def canonicalName = canonicalizeLicenseName(licenseName)
+                    def licenseMetadata = license instanceof LicenseMetadata ? new LicenseMetadata(canonicalName, license.licenseTextUrl) : DownloadLicensesExtension.license(canonicalName)
                     licenseSet << new DependencyMetadata(
                             dependency: dependencyDesc, dependencyFileName: rd.file.name, licenseMetadataList: [ licenseMetadata ]
                     )
@@ -98,39 +100,8 @@ class LicenseResolver {
                     licenseSet << dependencyMetadata()
                 }
             }
-
-            provideFileDependencies(p).each {
-                fileDependency ->
-                    Closure<DependencyMetadata> licenseMetadata = {
-                        if (licenses.containsKey(fileDependency)) {
-                            def license = licenses[fileDependency]
-                            LicenseMetadata licenseMetadata = license instanceof String ? DownloadLicensesExtension.license(license) : license
-                            def alias = aliases.find {
-                                aliasEntry ->
-                                    aliasEntry.value.any {
-                                        aliasElem ->
-                                            if (aliasElem instanceof String) {
-                                                return aliasElem == licenseMetadata.licenseName
-                                            } else if(aliasElem instanceof LicenseMetadata) {
-                                                return aliasElem == licenseMetadata
-                                            }
-
-                                    }
-                            }
-                            if (alias) {
-                                licenseMetadata = alias.key
-                            }
-                            new DependencyMetadata(dependency: fileDependency, dependencyFileName: fileDependency, licenseMetadataList: [licenseMetadata])
-                        } else {
-                            noLicenseMetaData(fileDependency, fileDependency)
-                        }
-                    }
-
-                    licenseSet << licenseMetadata()
-            }
         }
-
-        licenseSet
+        return licenseSet
     }
 
     Set<ResolvedArtifact> resolveProjectDependencies(Project project) {
@@ -312,5 +283,18 @@ class LicenseResolver {
         for(String toIgnore: dependenciesToIgnore){
             this.patternsToIgnore.add(Pattern.compile(toIgnore))
         }
+    }
+
+    private String canonicalizeLicenseName(String licenseName) {
+        if (aliases) {
+            for (def entry : aliases.entrySet()) {
+                def canonical = entry.key instanceof LicenseMetadata ? entry.key.licenseName : entry.key
+                def aliasList = entry.value.collect { it instanceof LicenseMetadata ? it.licenseName : it }
+                if (licenseName == canonical || aliasList.contains(licenseName)) {
+                    return canonical
+                }
+            }
+        }
+        return licenseName
     }
 }

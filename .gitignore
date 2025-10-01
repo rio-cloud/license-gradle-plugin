@@ -14,3 +14,4 @@ s101plugin.state
 /.classpath
 .idea/
 classes/
+/gradle.properties

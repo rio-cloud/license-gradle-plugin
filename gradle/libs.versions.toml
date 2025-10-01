@@ -2,14 +2,15 @@
 androidGradlePlugin = "9.0.0-alpha08"
 animalsniffer = "2.0.1"
 axionRelease = "1.20.1"
-guava = "17.0"
+guava = "33.5.0-jre"
 junit = "4.13.1"
+junit-platform-launcher = "6.0.0"
 licenseMavenPlugin = "3.0"
-nebulaTest = "8.1.0"
-plexusUtils = "2.0.5"
+nebulaTest = "11.3.0"
+plexusUtils = "4.0.2"
 pluginPublish = "2.0.0"
-spock = "2.3-groovy-4.0"
-versionCatalogUpdate = "0.8.4"
+spock = "2.4-M6-groovy-4.0"
+versionCatalogUpdate = "1.0.1"
 versions = "0.53.0"
 xmltool = "3.3"
 
@@ -17,6 +18,7 @@ xmltool = "3.3"
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 junit = { module = "junit:junit", version.ref = "junit" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform-launcher" }
 license-maven-plugin = { module = "com.mycila:license-maven-plugin", version.ref = "licenseMavenPlugin" }
 nebula-test = { module = "com.netflix.nebula:nebula-test", version.ref = "nebulaTest" }
 plexus-utils = { module = "org.codehaus.plexus:plexus-utils", version.ref = "plexusUtils" }
