@@ -1,5 +1,5 @@
 [versions]
-androidGradlePlugin = "4.1.0"
+androidGradlePlugin = "9.0.0-alpha08"
 animalsniffer = "2.0.1"
 axionRelease = "1.20.1"
 guava = "17.0"

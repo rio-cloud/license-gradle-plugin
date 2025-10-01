@@ -101,7 +101,7 @@ class AndroidLicensePluginTest {
     @Test
     public void shouldFindTwoLicenseTaskPerSourceSet() {
         def tasks = project.tasks.withType(License.class).findAll { true }
-        assertThat tasks.size(), is(18) // [androidTest, debug, main, release, test, testDebug, testRelease].count * 2
+        assertThat tasks.size(), is(24) // [androidTest, debug, main, release, test, testDebug, testRelease].count * 3
     }
 
     @Test
