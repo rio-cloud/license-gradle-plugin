@@ -27,8 +27,11 @@ defaultTasks 'build'
 
 group = 'com.hierynomus.gradle.plugins'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
 
 repositories {
     jcenter()
