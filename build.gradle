@@ -147,6 +147,8 @@ tasks.withType(Test).configureEach { t ->
 }
 
 gradlePlugin {
+    website = "https://github.com/rio-cloud/license-gradle-plugin"
+    vcsUrl = "https://github.com/rio-cloud/license-gradle-plugin"
     plugins {
         licensePlugin {
             id = "cloud.rio.license"
