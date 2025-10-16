@@ -44,7 +44,7 @@ class LicenseIntegrationTest extends IntegrationSpec {
         id "java"
     }
     
-    apply plugin: "com.github.hierynomus.license-base"
+    apply plugin: "cloud.rio.license-base"
     
     license {
         ignoreFailures = true

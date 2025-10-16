@@ -85,7 +85,7 @@ dependencies {
         buildFile << """
 plugins {
     id 'java'
-    id 'com.github.hierynomus.license-report'
+    id 'cloud.rio.license-report'
 }
 
 repositories {

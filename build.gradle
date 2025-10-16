@@ -23,11 +23,11 @@ plugins {
   alias(libs.plugins.versions)
 }
 
-apply plugin: 'com.github.hierynomus.license'
+apply plugin: 'cloud.rio.license'
 
 defaultTasks 'build'
 
-group = 'com.hierynomus.gradle.plugins'
+group = 'cloud.rio.gradle.plugins'
 
 java {
     toolchain {
@@ -149,22 +149,22 @@ tasks.withType(Test).configureEach { t ->
 gradlePlugin {
     plugins {
         licensePlugin {
-            id = "com.github.hierynomus.license"
+            id = "cloud.rio.license"
             implementationClass = "nl.javadude.gradle.plugins.license.LicensePlugin"
             displayName = "License plugin for Gradle"
-            description = "Applies a header to files, typically a license"
+            description = "Forked from hierynomus/license-gradle-plugin. Applies a header to files, typically a license"
         }
         licenseBasePlugin {
-            id = "com.github.hierynomus.license-base"
+            id = "cloud.rio.license-base"
             implementationClass = "com.hierynomus.gradle.license.LicenseBasePlugin"
             displayName = "Base License plugin for Gradle"
-            description = "Base plugin to apply a header to files, typically a license"
+            description = "Forked from hierynomus/license-gradle-plugin. Base plugin to apply a header to files, typically a license"
         }
         licenseReportPlugin {
-            id = "com.github.hierynomus.license-report"
+            id = "cloud.rio.license-report"
             implementationClass = "com.hierynomus.gradle.license.LicenseReportingPlugin"
             displayName = "License Report plugin for Gradle"
-            description = "Reports over licenses"
+            description = "Forked from hierynomus/license-gradle-plugin. Reports over licenses"
         }
     }
 }
@@ -175,10 +175,10 @@ publishing {
             pom {
                 name = project.name
                 description = project.description
-                url = "https://github.com/hierynomus/license-gradle-plugin"
+                url = "https://github.com/rio-cloud/license-gradle-plugin"
                 inceptionYear = '2011'
                 scm {
-                    url = "https://github.com/hierynomus/license-gradle-plugin.git"
+                    url = "https://github.com/rio-cloud/license-gradle-plugin.git"
                 }
                 licenses {
                     license {

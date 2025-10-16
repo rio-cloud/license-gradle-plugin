@@ -1,7 +1,14 @@
 = License Gradle Plugin
 Jeroen van Erp
-:license_plugin_version: 0.15.0
+:license_plugin_version:=== cloud.rio.license-base Plugin
 
+The `license-base` plugin only adds the license tasks and extension, and does not automatically apply them to any source sets.
+
+[source,groovy,subs="verbatim,attributes"]
+----
+plugins {
+  id "cloud.rio.license-base" version"{license_plugin_version}"
+}
 image:https://travis-ci.org/hierynomus/license-gradle-plugin.svg?branch=master[Build Status,link=https://travis-ci.org/hierynomus/license-gradle-plugin]
 
 This plugin will scan and adapt your source files to include a provided header, e.g. a LICENSE file.  By default it will scan every source set and report warnings. It will also create format tasks, which will properly format and apply the specified header. A bulk of the logic comes from the maven-license-plugin.
@@ -18,7 +25,7 @@ In your `build.gradle` file add:
 [source,groovy,subs="verbatim,attributes"]
 ----
 plugins {
-    id "com.github.hierynomus.license" version "{license_plugin_version}"
+    id "cloud.rio.license" version "{license_plugin_version}"
 }
 ----
 
@@ -34,11 +41,11 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.com.hierynomus.gradle.plugins:license-gradle-plugin:{license_plugin_version}"
+    classpath "gradle.plugin.cloud.rio.gradle.plugins:license-gradle-plugin:{license_plugin_version}"
   }
 }
 
-apply plugin: "com.github.hierynomus.license"
+apply plugin: "cloud.rio.license"
 ----
 
 === Gradle 1.x/2.0, gradle-license-plugin 0.10.0 (and earlier)
@@ -80,19 +87,19 @@ This plugin contains two types of tasks to each source set available in your pro
 
 Furthermore this task exposes the `license` extension to the project, allowing you to finetune the configuration of the plugin.
 
-=== com.github.hierynomus.license Plugin
+=== cloud.rio.license Plugin
 
 [source,groovy,subs="verbatim,attributes"]
 ----
 plugins {
-  id "com.github.hierynomus.license" version"{license_plugin_version}"
+  id "cloud.rio.license" version"{license_plugin_version}"
 }
 ----
 
 This plugin will apply the following plugins:
 
-- `com.github.hierynomus.license-base`
-- `com.github.hierynomus.license-report`
+- `cloud.rio.license-base`
+- `cloud.rio.license-report`
 
 Furthermore it will create the following tasks:
 
@@ -338,12 +345,12 @@ licenseFormat.dependsOn licenseFormatSql
 == Dependency License Reporting
 Next to checking for and applying license headers to your source files, this plugin also supports reporting on the licenses that your dependencies are licensed under.
 
-== com.github.hierynomus.license-report
+== cloud.rio.license-report
 
 [source,groovy,subs="verbatim,attributes"]
 ----
 plugins {
-  id "com.github.hierynomus.license-report" version"{license_plugin_version}"
+  id "cloud.rio.license-report" version"{license_plugin_version}"
 }
 ----
 

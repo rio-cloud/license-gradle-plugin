@@ -162,7 +162,7 @@ class AndroidLicensePluginTest {
 
     @Test
     public void shouldRunLicenseDuringCheck() {
-        project.apply plugin: 'com.github.hierynomus.license'
+        project.apply plugin: 'cloud.rio.license'
         def task = project.tasks.create('licenseManual', LicenseCheck)
 
         Set<Task> dependsOn = project.tasks['check'].getDependsOn()
@@ -174,7 +174,7 @@ class AndroidLicensePluginTest {
 
     @Test
     public void shouldRunLicenseFromBaseTasks() {
-        project.apply plugin: "com.github.hierynomus.license"
+        project.apply plugin: "cloud.rio.license"
         def manual = project.tasks.create('licenseManualCheck', LicenseCheck)
 
         def manualFormat = project.tasks.create('licenseManualFormat', LicenseFormat)

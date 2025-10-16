@@ -35,7 +35,7 @@ class LicenseReportTestKitTest extends Specification {
         buildFile.text = """
 plugins {
     id 'java'
-    id 'com.github.hierynomus.license-report'
+    id 'cloud.rio.license-report'
 }
 group = 'testGroup'
 version = '1.5'
