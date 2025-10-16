@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.4](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.3...v0.16.4) (2025-10-16)
+
+
+### Bug Fixes
+
+* Dummy commit to trigger release ([c88c9e6](https://github.com/rio-cloud/license-gradle-plugin/commit/c88c9e6941cdb99f7d5703df08b10f343110ec1c))
+
 ## [0.16.3](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.2...v0.16.3) (2025-10-16)
 
 
