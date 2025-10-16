@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
-          java-version: '11'
+          java-version: '21'
       - name: setup-gradle-cache
         uses: actions/cache@v4
         with:
