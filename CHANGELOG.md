@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.5](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.4...v0.16.5) (2025-10-16)
+
+
+### Bug Fixes
+
+* Adding necessary tags for the release ([e0304fc](https://github.com/rio-cloud/license-gradle-plugin/commit/e0304fcb146a87bdca89709bd3b1656b6e4280b1))
+
 ## [0.16.4](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.3...v0.16.4) (2025-10-16)
 
 
