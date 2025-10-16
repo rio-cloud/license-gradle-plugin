@@ -1,0 +1,9 @@
+# Changelog
+
+## [0.16.3](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.2...v0.16.3) (2025-10-16)
+
+
+### Bug Fixes
+
+* Updated the directory structure of the workflow directory ([2247e34](https://github.com/rio-cloud/license-gradle-plugin/commit/2247e34347c46a68956d959e366b6dd825466962))
+* Updated version to make it compatible with gradle 9 ([cbc0173](https://github.com/rio-cloud/license-gradle-plugin/commit/cbc0173890252eb01cb3540088f5e815b652dd25))
