@@ -155,18 +155,22 @@ gradlePlugin {
             implementationClass = "nl.javadude.gradle.plugins.license.LicensePlugin"
             displayName = "License plugin for Gradle"
             description = "Forked from hierynomus/license-gradle-plugin. Applies a header to files, typically a license"
+            tags.set(['dependency-management', 'license', 'reporting', 'gradle9', 'compliance'])
+            
         }
         licenseBasePlugin {
             id = "cloud.rio.license-base"
             implementationClass = "com.hierynomus.gradle.license.LicenseBasePlugin"
             displayName = "Base License plugin for Gradle"
             description = "Forked from hierynomus/license-gradle-plugin. Base plugin to apply a header to files, typically a license"
+            tags.set(['dependency-management', 'license', 'reporting', 'gradle9', 'compliance'])
         }
         licenseReportPlugin {
             id = "cloud.rio.license-report"
             implementationClass = "com.hierynomus.gradle.license.LicenseReportingPlugin"
             displayName = "License Report plugin for Gradle"
             description = "Forked from hierynomus/license-gradle-plugin. Reports over licenses"
+            tags.set(['dependency-management', 'license', 'reporting', 'gradle9', 'compliance'])
         }
     }
 }
