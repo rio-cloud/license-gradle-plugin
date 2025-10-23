@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.5...v0.17.0) (2025-10-23)
+
+
+### Features
+
+* Adding compatibility with java 17 ([5a5c84a](https://github.com/rio-cloud/license-gradle-plugin/commit/5a5c84abc9b8161317508347d26d03c38882d505))
+
 ## [0.16.5](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.4...v0.16.5) (2025-10-16)
 
 
