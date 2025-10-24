@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.18.0](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.17.0...v0.18.0) (2025-10-24)
+
+
+### Features
+
+* Allowing setting license report path explicitly as well ([5e461db](https://github.com/rio-cloud/license-gradle-plugin/commit/5e461dbe3da592b0a6055daaf6855680b15bf5ac))
+
+
+### Bug Fixes
+
+* Updating the path for generating the license report ([731b16c](https://github.com/rio-cloud/license-gradle-plugin/commit/731b16caf4f66e1d8fc467aa9516673fd410c259))
+
 ## [0.17.0](https://github.com/rio-cloud/license-gradle-plugin/compare/v0.16.5...v0.17.0) (2025-10-23)
 
 
